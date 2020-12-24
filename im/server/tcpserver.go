@@ -44,5 +44,36 @@ func starIMServer(config config.IMConfig) {
 监听
 */
 func (this *Server) listen() {
+	go func() {
+		for {
+			select {
+			// 接入连接
+			//case conn := <-this.joinsniffer:
+			//	{
+			//	}
+			//case
+
+			}
+
+		}
+	}()
+}
+
+/**
+建立连接
+*/
+func (this *Server) joinHandler(conn net.Conn) {
+	// 客户端 key
+	key := "123"
+	// 创建一个客户端
+	client := client.CreateClient(key, conn)
+	// 给客户端指定key
+	this.clients[key] = client
+	log.Printf("新客户端Key:[%s] online:%d", client.Key, len(ClientMaps))
+
+	// 开启协程不断接受消息
+	go func() {
+
+	}()
 
 }
